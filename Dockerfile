@@ -24,7 +24,9 @@ RUN set -x && \
     rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc && \
     chmod +x /usr/local/bin/gosu && \
     gosu nobody true && \
-    apk del .gosu-deps
+    apk del .gosu-deps && \
+    apk add --update curl && \
+    rm -rf /var/cache/apk/*
 
 ENV NOMAD_VERSION 0.5.4
 ENV NOMAD_SHA256 ed9eb471b9f5bab729cfa402db5aa56e1d935c328ac48327267e0ea53568d5c2
